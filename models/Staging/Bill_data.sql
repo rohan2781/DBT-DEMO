@@ -1,5 +1,6 @@
 select 
-		cast(Bill_no as STRING) as Bill_no,
+		patient_master.patient_id as Patient_Id,
+        cast(Bill_no as STRING) as Bill_no,
 		temp_billing_header.service_date as actual_date,
 		'C' as row_type,
 		temp_billing_header.office_id as office_id,
@@ -139,4 +140,4 @@ select
 	left join `titanium-atlas-428808-e7`.`DBT_Dataset`.`Insurance_Plan_Master` as insurance_plan_master on billing_subdetail.insurance_id = insurance_plan_master.srno 
 	left join `titanium-atlas-428808-e7`.`DBT_Dataset`.`Insurance_Carrier_Master` as insurance_carrier_master on insurance_plan_master.carrier_id = insurance_carrier_master.srno
 	group by row_type,service_date,office_id,office_code,office,doctor_id,provider,perf_doctor_id,performing_provider,carrier_id,insurance_carrier,plan_id,insurance_plan,
-		ref_party_id,referral_source,patient_type,patient_type_description,billing_id,CPT_Descr,Bill_NO,Bill_Created_by,CPT_Created_by,BillHeader_Created_Date,BillDetail_Created_Date
+		ref_party_id,referral_source,patient_type,patient_type_description,billing_id,CPT_Descr,Bill_NO,Bill_Created_by,CPT_Created_by,BillHeader_Created_Date,BillDetail_Created_Date,patient_master.patient_id

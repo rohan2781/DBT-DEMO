@@ -1,4 +1,5 @@
 select
+        patient_master.patient_id as Patient_Id,
 		cast(null as STRING) as Bill_no,
 		receipt_detail.receipt_date as actual_date,
 		'R' as row_type,
@@ -98,4 +99,4 @@ select
 		) as patient_master on receipt_detail.patient_id = patient_master.patient_id 
 		and receipt_detail.paid_by = 'P'
 		and patient_master.rowid = 1
-	group by row_type,receipt_date,office_id,office_code,office,doctor_id,provider,perf_doctor_id,performing_provider,carrier_id,insurance_carrier,plan_id,insurance_plan,ref_party_id,referral_source,patient_type,patient_type_description,billing_id,CPT_Descr,Bill_no,Bill_Created_by,CPT_Created_by,BillHeader_Created_Date,BillDetail_Created_Date
+	group by row_type,receipt_date,office_id,office_code,office,doctor_id,provider,perf_doctor_id,performing_provider,carrier_id,insurance_carrier,plan_id,insurance_plan,ref_party_id,referral_source,patient_type,patient_type_description,billing_id,CPT_Descr,Bill_no,Bill_Created_by,CPT_Created_by,BillHeader_Created_Date,BillDetail_Created_Date,patient_master.patient_id
