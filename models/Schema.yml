@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: Temp_Billing_Header
+    description: Test on Billing Header
+    columns:
+      - name: tran_Id
+        tests:
+          - not_null
+
+  - name: Temp_Receipt_Detail
+    description: Test on Receipt Detail
+    columns:
+      - name: receipt_id
+        tests:
+          - unique
+          - not_null
+
+  - name: Bill_data
+    description: Test on Bill Data
+    columns:
+      - name: row_type
+        tests:
+          - accepted_values:
+              values: ['C']
+  - name: Receipt_Data
+    description: Test on Receipt Data
+    columns:
+      - name: patient_id
+        tests:
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+  - name: Final_Bill
+    description: Docs for Final Bill
+    

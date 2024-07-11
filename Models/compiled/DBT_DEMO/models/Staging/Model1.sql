@@ -1,1 +1,0 @@
-select  * from `titanium-atlas-428808-e7.DBT_Dataset.Billing_Aging`
